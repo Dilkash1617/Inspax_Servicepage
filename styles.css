@@ -99,26 +99,4 @@ details p{margin:10px 0 0;color:var(--muted)}
  .row .b{width:100%}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
-.submit-btn {
-  display: block;
-  width: 200px;
-  padding: 15px 24px;
-  background: #f58220;
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
 
-.submit-btn:hover {
-  background: #d96810;
-  transform: translateY(-2px);
-}
-
-.submit-btn:focus-visible {
-  outline: 3px solid #222;
-  outline-offset: 3px;
-}
