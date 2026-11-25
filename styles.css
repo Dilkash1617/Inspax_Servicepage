@@ -101,7 +101,7 @@ details p{margin:10px 0 0;color:var(--muted)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 .submit-btn {
   display: inline-block;
-  width: 200%;
+  width: 200px;
   padding: 15px 24px;
   background: #f58220;
   color: #ffffff;
