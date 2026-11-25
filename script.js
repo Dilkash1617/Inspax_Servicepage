@@ -27,36 +27,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Validate the enquiry form and open a pre-filled email
-  const enquiryForm = document.querySelector("#enquiry-form, #contact-form, form[data-enquiry-form]");
+  const enquiryForm = document.querySelector("#enquiry-form");
 
-  if (enquiryForm) {
-    enquiryForm.addEventListener("submit", (event) => {
-      event.preventDefault();
+if (enquiryForm) {
+  enquiryForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-      if (!enquiryForm.reportValidity()) return;
+    if (!enquiryForm.reportValidity()) return;
 
-      const formData = new FormData(enquiryForm);
-      const getValue = (...keys) => {
-        for (const key of keys) {
-          const value = formData.get(key);
-          if (value !== null && String(value).trim()) return String(value).trim();
-        }
-        return "";
-      };
+    const formData = new FormData(enquiryForm);
 
-      const name = getValue("name", "fullName", "fullname");
-      const email = getValue("email");
-      const phone = getValue("phone", "mobile", "contact");
-      const service = getValue("service", "subject");
-      const message = getValue("message", "enquiry", "details");
+    const name = formData.get("name") || "";
+    const email = formData.get("email") || "";
+    const phone = formData.get("phone") || "";
+    const service = formData.get("service") || "";
+    const message = formData.get("message") || "";
 
-      const subject = encodeURIComponent(`Website enquiry${service ? ` - ${service}` : ""}`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nMessage:\n${message}`
-      );
+    const whatsappMessage =
+      `Hello Inspax Team!\n\n` +
+      `I would like to enquire about your services.\n\n` +
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      `Phone: ${phone}\n` +
+      `Service: ${service}\n` +
+      `Message: ${message}`;
 
-      // This opens the visitor's email application; it does not send automatically.
-      window.location.href = `mailto:info@inspax.in?subject=${subject}&body=${body}`;
-    });
+    const whatsappNumber = "919068298693";
+
+    const whatsappURL =
+      `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+    window.open(whatsappURL, "_blank");
+  });
   }
 });
